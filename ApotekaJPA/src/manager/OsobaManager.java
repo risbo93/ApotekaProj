@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 
 import model.Korisnik;
 import model.Osoba;
+import model.Stavka;
 
 public class OsobaManager {
 	public static final String ULOGAKORISNIK="korisnik";
@@ -14,6 +15,16 @@ public class OsobaManager {
 		try {
 			Osoba osoba=(Osoba) em.createQuery("Select o from Osoba o where o.korisnik=:korisnik").setParameter("korisnik", korisnik).getSingleResult();
 			return osoba;
+		}catch(Exception e) {
+			return null;
+		}
+	}
+	
+	public static Osoba getOsobaById(String idStr) {
+		EntityManager em=JPAUtil.getEntityManager();
+		try {
+			Integer id=Integer.parseInt(idStr);
+			return (Osoba) em.createQuery("SELECT o FROM Osoba o where o.idOsoba=:id").setParameter("id", id).getSingleResult();
 		}catch(Exception e) {
 			return null;
 		}
@@ -56,19 +67,15 @@ public class OsobaManager {
 		}
 	}
 	
-	public static void listKor() {
-		EntityManager em=JPAUtil.getEntityManager();
-		List<Korisnik> korisnici = em.createQuery("from Korisnik k").getResultList();
-		for (Korisnik korisnik : korisnici) {
-			System.out.println(korisnik.toString());
+	public static int cenaKupovine(Osoba osoba) {
+		List<Stavka> listaStavki = osoba.getStavkas();
+		if (listaStavki.isEmpty())
+			return 0;
+		int cena=0;
+		for (Stavka stavka : listaStavki) {
+			cena+=stavka.getLek().getCena()*stavka.getKolicina();
 		}
-	}
-	
-	public static boolean stop() {
-		EntityManager em=JPAUtil.getEntityManager();
-		em.getTransaction().begin();
-		em.close();
-		return true;
+		return cena;
 	}
 	
 	public static void main(String []args) {

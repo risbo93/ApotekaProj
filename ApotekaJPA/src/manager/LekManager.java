@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import model.Korisnik;
 import model.Lek;
 
 public class LekManager {
@@ -27,7 +28,7 @@ public class LekManager {
 	
 	public static List<Lek> listaLekova(){
 		EntityManager em=JPAUtil.getEntityManager();
-		return em.createQuery("SELECT l FROM Lek l").getResultList();
+		return em.createQuery("SELECT l FROM Lek l where l.obrisano=0").getResultList();
 	}
 	
 	public static Lek findLekById(String idStr) {

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="kupovina.css">
+<link rel="stylesheet" type="text/css" href="brisanje.css">
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -16,33 +16,32 @@
     <div class="row col-md-6 col-md-offset-2 custyle">
     <table class="table table-striped custab">
     <thead>
-    <a href="#" class="btn btn-primary btn-xs pull-right"><b>+</b> Add new categories</a>
+    <form action="/ApotekaWEB/IndexServlet" method="get"><button type="submit" id="button" class="btn btn-primary btn-xs pull-right">Povratak nazad</button></form>
         <tr>
             <th>ID</th>
-            <th>Title</th>
-            <th>Parent ID</th>
-            <th class="text-center">Action</th>
+            <th>Naziv</th>
+            <th>Cena</th>
+            <th class="text-center">Akcija</th>
         </tr>
     </thead>
-            <tr>
-                <td>1</td>
-                <td>News</td>
-                <td>News Cate</td>
-                <td class="text-center"><a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Products</td>
-                <td>Main Products</td>
-                <td class="text-center"><a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Blogs</td>
-                <td>Parent Blogs</td>
-                <td class="text-center"><a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
-            </tr>
+    <tbody>
+                <c:forEach var="lek" items="${lekovi }">
+						<tr>
+							<td>${lek.idLek }</td>
+							<td>${lek.naziv }</td>
+							<td>${lek.cena }</td>
+							<td><form action="/ApotekaWEB/KupovinaServlet" method="post">
+						<input name="odabir" type="hidden" value="${lek.idLek }">
+						 <button type="submit" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-edit"></span> Dodaj u korpu</button>
+						</form></td>
+						</tr>
+					</c:forEach>                             
+              </tbody>
     </table>
+    <form action="/ApotekaWEB/KorpaServlet" method="get">
+		<button type="submit" id="button"class="btn btn-primary btn-lg btn-block login-button">Korpa</button>
+</form>
+<h2>${poruka2 }</h2>
     </div>
 </div>
 </body>

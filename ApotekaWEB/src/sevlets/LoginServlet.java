@@ -71,7 +71,7 @@ public class LoginServlet extends HttpServlet {
 		
 		/*
 		 * <c:choose>
-									<c:when test="${loggedInUser.vrstaKorisnika == 'ADMIN' }">
+									<c:when test="${ulogovaniKorisnik.uloga == 'admin' }">
 										<input type="hidden" name="userIdForDelete"
 											id="userIdForDelete" value="${requestScope.korisnik.id }">
 										<input type="hidden" name="userWhoDeleteId"
