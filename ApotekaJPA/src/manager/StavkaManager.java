@@ -21,6 +21,38 @@ public class StavkaManager {
 		}
 	}
 	
+	public static boolean ukloniStavkuKorisniku(Osoba osoba,String lekId) {
+		EntityManager em=JPAUtil.getEntityManager();
+		Integer lek=Integer.parseInt(lekId);
+		em.getTransaction().begin();
+		try {
+			List<Stavka> listaStavki = listaStavki(osoba);
+			for (Stavka stavka : listaStavki) {
+				System.out.println(stavka.getLek().getIdLek());
+				System.out.println(lek);
+				if(stavka.getLek().getIdLek()==lek) {
+					if(stavka.getKolicina()>1) {
+						stavka.setKolicina(stavka.getKolicina()-1);
+						em.merge(stavka);
+						em.getTransaction().commit();
+						em.close();
+					}else {
+						listaStavki.remove(stavka);
+						osoba.setStavkas(listaStavki);
+						em.merge(osoba);
+						em.getTransaction().commit();
+						em.close();
+					}
+					break;
+				}
+			}
+			return true;
+		}catch(Exception e) {
+			em.close();
+			e.printStackTrace();
+			return false;
+		}
+	}
 	
 	public static boolean dodajStavkuKorisniku(Osoba korisnik, Lek lek) {
 		EntityManager em=JPAUtil.getEntityManager();

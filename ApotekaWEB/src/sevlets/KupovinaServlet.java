@@ -38,7 +38,7 @@ public class KupovinaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String poruka="";
-		request.getParameter("poruka");
+		poruka=request.getParameter("poruka");
 		List<Lek> listaLekova = LekManager.listaLekova();
 		request.setAttribute("lekovi", listaLekova);
 		RequestDispatcher rd = getServletContext().getRequestDispatcher("/kupovina.jsp");

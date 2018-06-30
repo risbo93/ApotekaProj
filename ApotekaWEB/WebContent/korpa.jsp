@@ -31,8 +31,8 @@
 							<td>${stavka.lek.naziv }</td>
 							<td>${stavka.kolicina }</td>
 							<td>${stavka.lek.cena }</td>
-							<td><form action="/ApotekaWEB/BrisanjeServlet" method="post">
-						<input name="odabraniLek" type="hidden" value="${lek.idLek }">
+							<td><form action="/ApotekaWEB/KorpaServlet" method="post">
+						<input name="odabraniL" type="hidden" value="${stavka.lek.idLek }">
 						 <button type="submit" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Obrisi</button>
 						</form></td>
 						</tr>
