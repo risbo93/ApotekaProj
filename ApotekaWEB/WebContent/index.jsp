@@ -140,6 +140,7 @@ h2 {
 			<div class="line"></div>
 			<div class="line"></div>
 			<div class="line"></div>
+			<div class="line"></div>
 		</div>
 		<div class="menu-inner">
 
@@ -150,19 +151,44 @@ h2 {
 						<button type="submit" id="button"
 							class="btn btn-primary btn-lg login-button">Pocetna</button>
 					</form></li>
-					
+					<c:choose>
+					<c:when test="${ulogovaniKorisnik != null }">
 				<li><form action="/ApotekaWEB/KupovinaServlet" method="get">
 						<button type="submit" id="button"
 							class="btn btn-primary btn-lg login-button">Kupovina</button>
 					</form></li>
-				<li><form action="/ApotekaWEB/IndexServlet" method="post">
-						<button type="submit" id="button"
-							class="btn btn-primary btn-lg login-button">Pregled</button>
-					</form></li>
+					</c:when>
+					</c:choose>
+					<c:choose>
+						<c:when test="${ulogovaniKorisnik.uloga == 'admin' }">
+							<li>
+								<form action="/ApotekaWEB/PregledServlet" method="get">
+								<button type="submit" id="button"
+									class="btn btn-primary btn-lg login-button">Pregled</button>
+								</form>
+							</li>
+						</c:when>
+					</c:choose>
 				<li><form action="/ApotekaWEB/ONamaServlet" method="get">
 						<button type="submit" id="button"
 							class="btn btn-primary btn-lg login-button">O nama</button>
 					</form></li>
+					<c:choose>
+					<c:when test="${ulogovaniKorisnik != null }">
+						<li>
+							<form action="/ApotekaWEB/LogoutServlet" method="get">
+								<button type="submit" id="button"
+									class="btn btn-primary btn-lg login-button">Logout</button>
+							</form>
+						</li>
+					</c:when>
+					<c:otherwise>
+					<li><form action="/ApotekaWEB/LoginServlet" method="get">
+						<button type="submit" id="button"
+							class="btn btn-primary btn-lg login-button">Login</button>
+					</form></li>
+					</c:otherwise>
+					</c:choose>
 			</ul>
 		</div>
 

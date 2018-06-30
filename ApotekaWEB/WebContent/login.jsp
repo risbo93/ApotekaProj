@@ -26,6 +26,9 @@
                  <form action="/ApotekaWEB/RegistracijaServlet" method="get">
                     <button class="btn btn-info btn-block login" type="submit">Register</button>
                 </form>
+                <form action="/ApotekaWEB/IndexServlet" method="get">
+                    <button class="btn btn-info btn-block login" type="submit">Pocetna</button>
+                </form> 
                <h5> ${poruka } </h5>
             </div>
         </div>
