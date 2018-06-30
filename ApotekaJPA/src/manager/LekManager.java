@@ -61,4 +61,15 @@ public class LekManager {
 		obrisiLek(lek);
 	}
 
+	public static List<Lek> listaLekovaFilter(String filter) {
+		// TODO Auto-generated method stub
+		String naziv = "%" + filter + "%";
+		System.out.println("filter -->" + filter);
+		if(filter!=null && !filter.isEmpty()){
+			EntityManager em=JPAUtil.getEntityManager();
+			return em.createQuery("SELECT l FROM Lek l where l.obrisano=0 and l.naziv like :naziv").setParameter("naziv", naziv).getResultList();
+		}
+		return listaLekova();
+	}
+
 }

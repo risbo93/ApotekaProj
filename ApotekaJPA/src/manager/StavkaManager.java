@@ -1,5 +1,6 @@
 package manager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -69,6 +70,8 @@ public class StavkaManager {
 						return true;
 					}
 				}
+			}else{
+				listaStavki = new ArrayList<>();
 			}
 			Stavka stavka=new Stavka();
 			stavka.setLek(lek);

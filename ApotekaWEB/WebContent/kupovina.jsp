@@ -16,6 +16,18 @@
     <div class="row col-md-6 col-md-offset-2 custyle">
     <table class="table table-striped custab">
     <thead>
+    <form action="/ApotekaWEB/FilterServlet" method="get" id="searchForm">
+    	<input type="text" name="filter" class="form-control" placeholder="Pretraga"/>
+    	<button type="submit" id="button" class="btn btn-primary btn-xs pull-left">Pretraga</button>
+    </form>
+<script type="text/javascript>">
+	var form = document.getElementById('searchForm');
+	form.onsubmit = function(){
+		console.log('nesto');
+		//ovako samo zbog testiranja, da vidimo da se okinulo
+		return true;
+	}
+</script>
     <form action="/ApotekaWEB/IndexServlet" method="get"><button type="submit" id="button" class="btn btn-primary btn-xs pull-right">Povratak nazad</button></form>
         <tr>
             <th>ID</th>
