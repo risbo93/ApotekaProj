@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
  * Servlet Filter implementation class LoginFilter
  */
 @WebFilter(filterName="filterOne", urlPatterns = { "/BrisanjeServlet/*", "/DodavanjeLekaServlet/*", "/KorpaServlet/*", 
-		"/KupovinaServlet/*", "/PregledServlet/*"})
+		"/KupovinaServlet/*", "/PregledServlet/*", "/KomentarServlet/*"})
 
 public class LoginFilter implements Filter {
 
