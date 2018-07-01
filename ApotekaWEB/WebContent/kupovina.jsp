@@ -34,6 +34,7 @@
             <th>Naziv</th>
             <th>Cena</th>
             <th class="text-center">Akcija</th>
+            <th class="text-center">Akcija</th>
         </tr>
     </thead>
     <tbody>
@@ -45,6 +46,10 @@
 							<td><form action="/ApotekaWEB/KupovinaServlet" method="post">
 						<input name="odabir" type="hidden" value="${lek.idLek }">
 						 <button type="submit" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-edit"></span> Dodaj u korpu</button>
+						</form></td>
+						<td><form action="/ApotekaWEB/KomentarServlet" method="get">
+						<input name="odabir" type="hidden" value="${lek.idLek }">
+						 <button type="submit" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-edit"></span>Komentari</button>
 						</form></td>
 						</tr>
 					</c:forEach>                             
