@@ -130,6 +130,7 @@
 				<li><form action="/ApotekaWEB/BrisanjeServlet" method="get"><button type="submit" id="button" class="btn btn-primary btn-lg login-button">Pregled Lekova</button></form></li>
 				<li><form action="/ApotekaWEB/DodavanjeLekaServlet" method="get"><button type="submit" id="button" class="btn btn-primary btn-lg login-button">Dodavanje Leka</button></form></li>
 				<li><form action="/ApotekaWEB/ReportServlet" method="get"><button type="submit" id="button" class="btn btn-primary btn-lg login-button">PDF Cenovnik</button></form></li>
+				<li><form action="/ApotekaWEB/ImenikServlet" method="get"><button type="submit" id="button" class="btn btn-primary btn-lg login-button">PDF Imenik</button></form></li>
 			</ul>
 		</div>
   

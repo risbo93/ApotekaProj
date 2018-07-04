@@ -15,7 +15,8 @@ import model.Osoba;
 /**
  * Servlet Filter implementation class AdminFilter
  */
-@WebFilter(filterName="filterAdmin", urlPatterns = { "/BrisanjeServlet/*", "/DodavanjeLekaServlet/*", "/PregledServlet/*"})
+@WebFilter(filterName="filterAdmin", urlPatterns = { "/BrisanjeServlet/*", "/DodavanjeLekaServlet/*", 
+		"/PregledServlet/*", "/ReportServlet/*", "/ImenikServlet/*"})
 public class AdminFilter implements Filter {
 
     /**
