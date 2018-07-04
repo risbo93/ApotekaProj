@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import org.jasypt.util.password.StrongPasswordEncryptor;
+
 import model.Korisnik;
 import model.Osoba;
 import model.Stavka;
@@ -39,7 +41,9 @@ public class OsobaManager {
 			Integer godine=Integer.parseInt(godineStr);
 			Korisnik korisnik=new Korisnik();
 			korisnik.setUsername(username);
-			korisnik.setPass(password);
+			StrongPasswordEncryptor passwordEncryptor = new StrongPasswordEncryptor();
+			String encryptedPassword = passwordEncryptor.encryptPassword(password);
+			korisnik.setPass(encryptedPassword);
 			if(KorisnikManager.proveraPostojanja(username)) {
 				return false;
 			}
