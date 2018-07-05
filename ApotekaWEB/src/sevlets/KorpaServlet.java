@@ -72,7 +72,7 @@ public class KorpaServlet extends HttpServlet {
 				if (KupovinaManager.ocistiKorpu(ulogovaniKorisnik)) {
 					poruka3 = "Uspesno izvrsena kupovina!";
 				}else {
-					poruka3 = "Kupovina nije uspesno izvrsena!";
+					System.out.println("Kupovina nije uspesno izvrsena!");
 				}
 			} else {
 				poruka3 = "Kupovina nije uspesno izvrsena!";

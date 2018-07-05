@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="kp" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="270a6510-3414-4656-9342-36f6b9e7f696">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (2)"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT k.id_kupovina,o.ime,o.prezime,o.grad,o.ulica,ks.naziv,l.naziv,l.cena,s.kolicina FROM apotdb.kupovina_has_stavka as sta
+INNER JOIN kupovina k on k.id_kupovina=sta.kupovina_id_kupovina
+INNER JOIN osoba as o on o.id_osoba=k.osoba_id_osoba
+INNER JOIN kurirska_sluzba as ks on ks.id_kurirska_sluzba=k.kurirska_sluzba_id_kurirska_sluzba
+INNER JOIN stavka as s on s.id_stavka=sta.stavka_id_stavka
+INNER JOIN lek as l on l.id_lek=s.lek_id_lek;]]>
+	</queryString>
+	<field name="id_kupovina" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="id_kupovina"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="kupovina"/>
+	</field>
+	<field name="ime" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ime"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="osoba"/>
+	</field>
+	<field name="prezime" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="prezime"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="osoba"/>
+	</field>
+	<field name="grad" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="grad"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="osoba"/>
+	</field>
+	<field name="ulica" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ulica"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="osoba"/>
+	</field>
+	<field name="naziv" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="naziv"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="kurirska_sluzba"/>
+	</field>
+	<field name="COLUMN_7" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="naziv"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="lek"/>
+	</field>
+	<field name="cena" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="cena"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="lek"/>
+	</field>
+	<field name="kolicina" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="kolicina"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="stavka"/>
+	</field>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{id_kupovina}]]></groupExpression>
+		<groupHeader>
+			<band height="40">
+				<textField>
+					<reportElement style="SubTitle" x="47" y="13" width="506" height="24" forecolor="#990099" uuid="0af2eb97-cf9e-4640-a988-bc290a275a38"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{id_kupovina}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement mode="Opaque" x="0" y="13" width="36" height="24" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="901c162f-ce1a-4fa1-927d-c4e7adac5fed"/>
+				</rectangle>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<group name="Group2">
+		<groupExpression><![CDATA[$F{ime}]]></groupExpression>
+		<groupHeader>
+			<band height="57">
+				<textField>
+					<reportElement style="SubTitle" stretchType="RelativeToBandHeight" x="90" y="0" width="90" height="20" uuid="d6dc71fe-0f5b-43a2-bdc2-0c049f3e9cd7"/>
+					<textElement>
+						<font size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ime}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="SubTitle" x="180" y="0" width="90" height="20" uuid="fdaf31a9-6599-4a9a-af97-d3f2da102a21"/>
+					<textElement>
+						<font size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{prezime}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="SubTitle" x="90" y="21" width="90" height="20" uuid="394b9576-d849-44eb-8611-c1afbe1245a1"/>
+					<textElement>
+						<font size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{grad}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="SubTitle" x="180" y="21" width="210" height="20" uuid="e71f1ccc-5951-4b9d-ab74-1f0f38c9fc58"/>
+					<textElement>
+						<font size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ulica}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="20" width="81" height="21" uuid="0ffa06be-b518-47d1-a7bd-f208aa0e9e43"/>
+					<textElement>
+						<font size="14"/>
+						<paragraph lineSpacing="Double"/>
+					</textElement>
+					<text><![CDATA[Ulica:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="0" width="81" height="21" uuid="5ac7d622-cecc-48ff-a758-e4e51d328b4a"/>
+					<textElement>
+						<font size="14"/>
+						<paragraph lineSpacing="Double"/>
+					</textElement>
+					<text><![CDATA[Osoba:]]></text>
+				</staticText>
+				<textField>
+					<reportElement style="SubTitle" x="433" y="0" width="90" height="20" uuid="5c56bb55-ceed-4548-a94b-c80a0918c8ec"/>
+					<textElement>
+						<font size="12" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{naziv}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="prezime">
+		<groupExpression><![CDATA[$F{prezime}]]></groupExpression>
+	</group>
+	<group name="grad">
+		<groupExpression><![CDATA[$F{grad}]]></groupExpression>
+	</group>
+	<group name="ulica">
+		<groupExpression><![CDATA[$F{ulica}]]></groupExpression>
+	</group>
+	<group name="COLUMN_7">
+		<groupExpression><![CDATA[$F{COLUMN_7}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image>
+				<reportElement x="275" y="0" width="300" height="64" uuid="88796d59-cd8c-43c1-853f-dd6acfa88258"/>
+				<imageExpression><![CDATA["http://www.clker.com/cliparts/X/U/F/3/N/2/shopping-cart-logo.svg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="bcf29663-c4b8-483e-a197-e5f6920fd2a2"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Narudzbine:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="63" y="46" width="200" height="22" uuid="c089ef81-84c2-4243-a7e9-0e0a8992e71a"/>
+				<textElement textAlignment="Right"/>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="39" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="9d02e302-57b8-432b-babd-efb2418804ba"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="185" height="15" uuid="7c0344d6-278e-44ce-9b91-986efea9a057">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9a1c8615-96fb-443e-82d8-b0a5fa8e002f"/>
+				</reportElement>
+				<text><![CDATA[naziv]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="185" y="19" width="185" height="15" uuid="62336105-025c-480b-9ab1-83da690e7cba">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="516b14c1-e100-41f5-a4db-2a09d044be84"/>
+				</reportElement>
+				<text><![CDATA[cena]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="320" y="19" width="95" height="15" uuid="1a82f4e1-405b-43a1-8c0f-9afe9f4d4b84">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fc20d2b8-34f2-4082-aaac-90595837e659"/>
+				</reportElement>
+				<text><![CDATA[kolicina]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="433" y="21" width="95" height="15" uuid="da88b418-4db0-4485-b826-5e86895565bb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fc20d2b8-34f2-4082-aaac-90595837e659"/>
+				</reportElement>
+				<text><![CDATA[kurirska sluzba]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="19" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="e333df44-9887-45d8-a569-1c4607976a27"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="185" height="15" uuid="9ac701a0-6489-4977-867c-cc53f5f48dc4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9a1c8615-96fb-443e-82d8-b0a5fa8e002f"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{COLUMN_7}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="185" y="0" width="185" height="15" uuid="32582063-a958-42dd-b932-6110f10a92be">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="516b14c1-e100-41f5-a4db-2a09d044be84"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{cena}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="320" y="0" width="185" height="15" uuid="e37d5b2f-f48b-472f-9290-8ce4f3b9b3dd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fc20d2b8-34f2-4082-aaac-90595837e659"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{kolicina}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="f4ea54fc-a4b9-4971-acd1-638c2e274a20"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="433509ef-2a34-4797-9cd1-684511ae022d"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="27402784-6be1-4e60-b9c7-c3664ea17454"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="e16da2cc-f2dd-4b0a-a299-981148326ee6"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

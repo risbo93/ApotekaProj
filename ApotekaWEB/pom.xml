@@ -54,7 +54,11 @@
 			<artifactId>jasperreports</artifactId>
 			<version>6.3.1</version>
 		</dependency>
-		
+		<dependency>
+			<groupId>org.apache.xmlgraphics</groupId>
+			<artifactId>batik-bridge</artifactId>
+			<version>1.9.1</version>
+		</dependency>
 
 	</dependencies>
 </project>

@@ -18,13 +18,20 @@ public class KupovinaManager {
 			Kupovina kupovina = new Kupovina();
 			kupovina.setKurirskaSluzba(kurirskaSluzba);
 			List<Stavka> stavkas = osoba.getStavkas();
-//			kupovina.setStavkas(stavkas);
+			if(stavkas.isEmpty() || stavkas==null) {
+				System.out.println("korpa prazna");
+				return false;
+			}
+			else {
+				System.out.println("korpa nije prazna");
+			}
 			kupovina.setOsoba(osoba);
 			em.persist(kupovina);
 			em.flush();
 			List<Kupovina> kupovinas = new ArrayList<>();
 			kupovinas.add(kupovina);
 			for(Stavka s:stavkas){
+				System.out.println("stavka------>"+s.getLek().getNaziv());
 				Stavka st = em.find(Stavka.class, s.getIdStavka());
 				st.setKupovinas(kupovinas);
 				em.persist(st);
@@ -56,10 +63,14 @@ public class KupovinaManager {
 		}
 	}
 	
-	public static void main(String[] args){
-		Osoba o = OsobaManager.getOsobaById("1");
-		KurirskaSluzba k = KurirskaSluzbaManager.findKurirskaSluzbaById("1");
-		novaKupovina(k,o);
-		ocistiKorpu(o);
+	public static List<Kupovina> listaKupovina(){
+		EntityManager em = JPAUtil.getEntityManager();
+		return em.createQuery("SELECT k FROM Kupovina k").getResultList();
 	}
+	
+	public static void main(String[] args){
+		Osoba o = OsobaManager.getOsobaById("3");
+		KurirskaSluzba k = KurirskaSluzbaManager.findKurirskaSluzbaById("3");
+		novaKupovina(k,o);
+		}
 }
