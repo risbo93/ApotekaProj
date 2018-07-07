@@ -43,14 +43,17 @@ INNER JOIN lek as l on l.id_lek=s.lek_id_lek;]]>
 		<property name="com.jaspersoft.studio.field.label" value="naziv"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="lek"/>
 	</field>
-	<field name="cena" class="java.lang.Long">
+	<field name="cena" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.label" value="cena"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="lek"/>
 	</field>
-	<field name="kolicina" class="java.lang.Long">
+	<field name="kolicina" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.label" value="kolicina"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="stavka"/>
 	</field>
+	<variable name="total" class="java.lang.Integer" resetType="Group" resetGroup="Group2" calculation="Sum">
+		<variableExpression><![CDATA[new Integer($F{cena}.intValue() * $F{kolicina}.intValue())]]></variableExpression>
+	</variable>
 	<group name="Group1">
 		<groupExpression><![CDATA[$F{id_kupovina}]]></groupExpression>
 		<groupHeader>
@@ -68,13 +71,28 @@ INNER JOIN lek as l on l.id_lek=s.lek_id_lek;]]>
 			</band>
 		</groupHeader>
 		<groupFooter>
-			<band height="6"/>
+			<band height="41">
+				<textField>
+					<reportElement style="SubTitle" x="360" y="6" width="178" height="20" uuid="f254c25f-d828-43d5-b8d7-788c789f62ef"/>
+					<textElement>
+						<font size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="310" y="3" width="60" height="30" uuid="18a8e2b6-7b3e-4803-a3b8-51deaced0016"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<text><![CDATA[Iznos:]]></text>
+				</staticText>
+			</band>
 		</groupFooter>
 	</group>
 	<group name="Group2">
 		<groupExpression><![CDATA[$F{ime}]]></groupExpression>
 		<groupHeader>
-			<band height="57">
+			<band height="70">
 				<textField>
 					<reportElement style="SubTitle" stretchType="RelativeToBandHeight" x="90" y="0" width="90" height="20" uuid="d6dc71fe-0f5b-43a2-bdc2-0c049f3e9cd7"/>
 					<textElement>
@@ -153,11 +171,7 @@ INNER JOIN lek as l on l.id_lek=s.lek_id_lek;]]>
 			<staticText>
 				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="bcf29663-c4b8-483e-a197-e5f6920fd2a2"/>
 				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[Narudzbine:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="SubTitle" x="63" y="46" width="200" height="22" uuid="c089ef81-84c2-4243-a7e9-0e0a8992e71a"/>
-				<textElement textAlignment="Right"/>
+				<text><![CDATA[Kupovine]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -199,7 +213,7 @@ INNER JOIN lek as l on l.id_lek=s.lek_id_lek;]]>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="19" splitType="Stretch">
+		<band height="50" splitType="Stretch">
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="e333df44-9887-45d8-a569-1c4607976a27"/>
 				<graphicElement>
